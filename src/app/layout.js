@@ -1,6 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ClerkProvider } from '@clerk/nextjs';
 import Header from "@/components/Header";
+import ThemeCom from "@/components/ThemeCom";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,11 +22,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body>
-           <Header/>
-           {children}
+           <ThemeCom>
+             <Header/>
+              {children}
+           </ThemeCom>
       </body>
     </html>
+    </ClerkProvider>
   );
 }
